@@ -28,6 +28,9 @@ class User extends \TCG\Voyager\Models\User
         'password', 'remember_token',
     ];
 
+    const ADMIN = 1;
+    const CUSTOMER = 2;
+
     /**
      * The attributes that should be cast to native types.
      *

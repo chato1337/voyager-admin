@@ -15,11 +15,16 @@
                 @endphp
 
                 @if(isset($query))
+                    {{--  para mostrar el enlace a una relacion  --}}
+                    @if(auth()->user()->role_id === \App\User::ADMIN)
                     <p>
                         <a href="{{ route('voyager.'.Voyager::model('DataType')->whereName($options->table)->first()->slug.'.show', $query->{$options->key}) }}">
                             {{ $query->{$options->label} }}
                         </a>
                     </p>
+                    @else
+                    <p>{{ $query->{$options->label} }}</p>
+                    @endif
                 @else
                     <p>{{ __('voyager::generic.no_results') }}</p>
                 @endif
